@@ -1,12 +1,12 @@
 function getAddr(formSelector) {
     const theForm = document.querySelector(formSelector);
-    const postcodeInput = theForm.querySelector("[postcode]");
-    const prefectureInput = theForm.querySelectorAll("[prefecture]");
-    const cityInput = theForm.querySelectorAll("[city]");
-    const addressInput = theForm.querySelectorAll("[address1]");
-    const prefectureKanaInput = theForm.querySelectorAll("[prefectureKana]");
-    const cityKanaInput = theForm.querySelectorAll("[cityKana]");
-    const addressKanaInput = theForm.querySelectorAll("[address1Kana]");
+    const postcodeInput = theForm.querySelector('[postcode]');
+    const prefectureInput = theForm.querySelectorAll('[prefecture]');
+    const cityInput = theForm.querySelectorAll('[city]');
+    const addressInput = theForm.querySelectorAll('[address1]');
+    const prefectureKanaInput = theForm.querySelectorAll('[prefectureKana]');
+    const cityKanaInput = theForm.querySelectorAll('[cityKana]');
+    const addressKanaInput = theForm.querySelectorAll('[address1Kana]');
     const allInputs = [
         prefectureInput,
         cityInput,
@@ -16,10 +16,10 @@ function getAddr(formSelector) {
         addressKanaInput
     ];
     const init = () => {
-        postcodeInput.addEventListener("input", (e) => {
+        postcodeInput.addEventListener('input', (e) => {
             // Strip all non-numeric chars from string
             const element = e.target;
-            const val = element.value.replace(/\D/g, "");
+            const val = element.value.replace(/\D/g, '');
             // Don't lookup if length too short
             if (val.length < 7)
                 return false;
@@ -30,7 +30,7 @@ function getAddr(formSelector) {
                     // All together
                     allInputs.forEach((inputList) => inputList.forEach((input) => {
                         const inputElement = input;
-                        inputElement.value = "";
+                        inputElement.value = '';
                     }));
                     // Kanji
                     prefectureInput.forEach((input) => {
@@ -63,15 +63,15 @@ function getAddr(formSelector) {
         });
         // Lookup data from zipcloud API
         const getPostcodeData = async (postcode) => {
-            const response = await fetch("https://zipcloud.ibsnet.co.jp/api/search?" +
+            const response = await fetch('https://zipcloud.ibsnet.co.jp/api/search?' +
                 new URLSearchParams({ zipcode: postcode }), {
-                method: "get"
+                method: 'get'
             });
             return response.json();
         };
         // Convert halfwidth kana to fullwidth kana
         const fullWidth = (str) => {
-            return str.normalize("NFKC");
+            return str.normalize('NFKC');
         };
     };
     init();
