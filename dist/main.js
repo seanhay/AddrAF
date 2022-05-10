@@ -76,3 +76,4 @@ function getAddr(formSelector) {
     };
     init();
 }
+export {};
