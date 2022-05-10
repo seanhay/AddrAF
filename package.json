@@ -1,0 +1,21 @@
+{
+  "name": "addraf",
+  "version": "1.0.0",
+  "description": "Autofill fields with address information looked up from Japanese postal code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "tsc ./src/main.ts --outDir ./dist --target es2017"
+  },
+  "keywords": [
+    "address",
+    "postcode",
+    "zipcode",
+    "form"
+  ],
+  "author": "Sean Hay",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
