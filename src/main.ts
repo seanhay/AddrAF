@@ -25,7 +25,7 @@ function getAddr(formSelector: string) {
   const cityKanaInput: NodeList = theForm.querySelectorAll('[cityKana]')
   const addressKanaInput: NodeList = theForm.querySelectorAll('[address1Kana]')
 
-  const allInputs = [
+  const allInputs: Array<NodeList> = [
     prefectureInput,
     cityInput,
     addressInput,
@@ -40,8 +40,8 @@ function getAddr(formSelector: string) {
       const element = e.target as HTMLInputElement
       const val = element.value.replace(/\D/g, '')
 
-      // Don't lookup if length too short
-      if (val.length < 7) return false
+      // Don't lookup if length not 7 digits
+      if (val.length !== 7) return false
 
       getPostcodeData(val).then((data: addressData) => {
         console.log(data)
