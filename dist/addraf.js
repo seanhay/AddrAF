@@ -1,5 +1,6 @@
 function addraf(formSelector) {
   const theForm = document.querySelector(formSelector)
+  const fetchButton = theForm.querySelector('[getAddress]')
   const postcodeInput = theForm.querySelector('[postcode]')
   const prefectureInput = theForm.querySelectorAll('[prefecture]')
   const cityInput = theForm.querySelectorAll('[city]')
@@ -16,12 +17,20 @@ function addraf(formSelector) {
     addressKanaInput
   ]
   const init = () => {
-    postcodeInput.addEventListener('input', (e) => {
-      const element = e.target
-      const val = element.value.replace(/\D/g, '')
-      if (val.length !== 7)
+    if (!fetchButton) {
+      postcodeInput.addEventListener('input', (e) => {
+        const input = e.target
+        fetchAddress(input.value)
+      })
+    }
+    else {
+      fetchButton.addEventListener('click', () => fetchAddress(postcodeInput.value))
+    }
+    const fetchAddress = (pc) => {
+      const postcode = pc.replace(/\D/g, '')
+      if (postcode.length !== 7)
         return false
-      getPostcodeData(val).then((data) => {
+      getPostcodeData(postcode).then((data) => {
         if (data.status == 200) {
           const results = data.results[0]
           allInputs.forEach((inputList) => inputList.forEach((input) => {
@@ -54,7 +63,7 @@ function addraf(formSelector) {
           })
         }
       })
-    })
+    }
     const getPostcodeData = async (postcode) => {
       const response = await fetch('https://zipcloud.ibsnet.co.jp/api/search?' +
                 new URLSearchParams({ zipcode: postcode }), {

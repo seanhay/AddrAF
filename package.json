@@ -1,6 +1,6 @@
 {
   "name": "addraf",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Autofill fields with address information looked up from Japanese postal code.",
   "main": "dist/addraf.js",
   "scripts": {

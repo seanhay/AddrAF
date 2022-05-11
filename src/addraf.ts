@@ -15,6 +15,7 @@ type addressData = {
 
 function addraf(formSelector: string) {
   const theForm: HTMLElement = document.querySelector(formSelector)
+  const fetchButton: HTMLButtonElement = theForm.querySelector('[getAddress]')
   const postcodeInput: HTMLInputElement = theForm.querySelector('[postcode]')
   const prefectureInput: NodeList = theForm.querySelectorAll('[prefecture]')
   const cityInput: NodeList = theForm.querySelectorAll('[city]')
@@ -33,15 +34,23 @@ function addraf(formSelector: string) {
   ]
 
   const init = () => {
-    postcodeInput.addEventListener('input', (e) => {
+    if (!fetchButton) {
+      postcodeInput.addEventListener('input', (e) => {
+        const input = e.target as HTMLInputElement
+        fetchAddress(input.value)
+      })
+    } else {
+      fetchButton.addEventListener('click', () => fetchAddress(postcodeInput.value))
+    }
+
+    const fetchAddress = (pc: string) => {
       // Strip all non-numeric chars from string
-      const element = e.target as HTMLInputElement
-      const val = element.value.replace(/\D/g, '')
+      const postcode = pc.replace(/\D/g, '')
 
       // Don't lookup if length not 7 digits
-      if (val.length !== 7) return false
+      if (postcode.length !== 7) return false
 
-      getPostcodeData(val).then((data: addressData) => {
+      getPostcodeData(postcode).then((data: addressData) => {
         if (data.status == 200) {
           const results = data.results[0]
           // All together
@@ -53,7 +62,7 @@ function addraf(formSelector: string) {
           )
           // Kanji
           prefectureInput.forEach((input) => {
-            const inputElement = input as HTMLInputElement
+            const inputElement = input as HTMLInputElement | HTMLSelectElement
             inputElement.value += results.address1
           })
           cityInput.forEach((input) => {
@@ -79,7 +88,7 @@ function addraf(formSelector: string) {
           })
         }
       })
-    })
+    }
 
     // Lookup data from zipcloud API
     const getPostcodeData = async (postcode: string) => {
