@@ -1,5 +1,3 @@
-export {}
-
 type addressData = {
   message: string
   results: {
@@ -44,7 +42,6 @@ function addraf(formSelector: string) {
       if (val.length !== 7) return false
 
       getPostcodeData(val).then((data: addressData) => {
-        console.log(data)
         if (data.status == 200) {
           const results = data.results[0]
           // All together

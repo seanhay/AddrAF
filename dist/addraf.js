@@ -69,4 +69,3 @@ function addraf(formSelector) {
   }
   init()
 }
-export {}
