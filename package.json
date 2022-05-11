@@ -17,10 +17,8 @@
     "zipcode",
     "form"
   ],
-  "author": "Sean Hay",
-  "bugs": {
-		"url": "https://github.com/seanhay/AddrAF/issues"
-	},
+  "author": "Sean Hay", 
+	"url": "https://github.com/seanhay/AddrAF/issues",
 	"homepage": "https://github.com/seanhay/AddrAF#readme",
   "license": "MIT",
   "devDependencies": {
