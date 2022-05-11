@@ -21,9 +21,9 @@ Note that this also works with prefecture select lists, as long as the prefectur
     
     <input type="text" prefecture>
     <select prefecture>
-        <option value="神奈川">神奈川</option>
-        <option value="愛知">愛知</option>
-        <option value="熊本">熊本</option>
+        <option value="神奈川県">神奈川県</option>
+        <option value="愛知県">愛知県</option>
+        <option value="熊本県">熊本県</option>
     </select>
     <input type="text" city>
     <input type="text" address1>
