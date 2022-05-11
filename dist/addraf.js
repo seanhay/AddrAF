@@ -22,7 +22,6 @@ function addraf(formSelector) {
       if (val.length !== 7)
         return false
       getPostcodeData(val).then((data) => {
-        console.log(data)
         if (data.status == 200) {
           const results = data.results[0]
           allInputs.forEach((inputList) => inputList.forEach((input) => {
