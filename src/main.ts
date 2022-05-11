@@ -15,7 +15,7 @@ type addressData = {
   status: number
 }
 
-function getAddr(formSelector: string) {
+function addraf(formSelector: string) {
   const theForm: HTMLElement = document.querySelector(formSelector)
   const postcodeInput: HTMLInputElement = theForm.querySelector('[postcode]')
   const prefectureInput: NodeList = theForm.querySelectorAll('[prefecture]')

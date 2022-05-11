@@ -1,4 +1,4 @@
-function getAddr(formSelector) {
+function addraf(formSelector) {
   const theForm = document.querySelector(formSelector)
   const postcodeInput = theForm.querySelector('[postcode]')
   const prefectureInput = theForm.querySelectorAll('[prefecture]')
@@ -17,22 +17,18 @@ function getAddr(formSelector) {
   ]
   const init = () => {
     postcodeInput.addEventListener('input', (e) => {
-      // Strip all non-numeric chars from string
       const element = e.target
       const val = element.value.replace(/\D/g, '')
-      // Don't lookup if length not 7 digits
       if (val.length !== 7)
         return false
       getPostcodeData(val).then((data) => {
         console.log(data)
         if (data.status == 200) {
           const results = data.results[0]
-          // All together
           allInputs.forEach((inputList) => inputList.forEach((input) => {
             const inputElement = input
             inputElement.value = ''
           }))
-          // Kanji
           prefectureInput.forEach((input) => {
             const inputElement = input
             inputElement.value += results.address1
@@ -45,7 +41,6 @@ function getAddr(formSelector) {
             const inputElement = input
             inputElement.value += results.address3
           })
-          // Kana
           prefectureKanaInput.forEach((input) => {
             const inputElement = input
             inputElement.value += fullWidth(results.kana1)
@@ -61,7 +56,6 @@ function getAddr(formSelector) {
         }
       })
     })
-    // Lookup data from zipcloud API
     const getPostcodeData = async (postcode) => {
       const response = await fetch('https://zipcloud.ibsnet.co.jp/api/search?' +
                 new URLSearchParams({ zipcode: postcode }), {
@@ -69,7 +63,6 @@ function getAddr(formSelector) {
       })
       return response.json()
     }
-    // Convert halfwidth kana to fullwidth kana
     const fullWidth = (str) => {
       return str.normalize('NFKC')
     }
