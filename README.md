@@ -46,7 +46,7 @@ Note that this also works with prefecture select lists, as long as the prefectur
 If a button exists inside the form with the attribute getAddress, data will only be fetched when clicked, not automatically on input.
 
 ```HTML
-<form class=".selector">
+<form class="selector">
     <input type="text" postcode>
     <button getAddress>Get Address</button>
 
