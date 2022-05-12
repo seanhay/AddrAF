@@ -24,7 +24,10 @@ function addraf(formSelector) {
       })
     }
     else {
-      fetchButton.addEventListener('click', () => fetchAddress(postcodeInput.value))
+      fetchButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        fetchAddress(postcodeInput.value)
+      })
     }
     const fetchAddress = (pc) => {
       const postcode = pc.replace(/\D/g, '')

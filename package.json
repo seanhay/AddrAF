@@ -1,6 +1,6 @@
 {
   "name": "addraf",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Autofill fields with address information looked up from Japanese postal code.",
   "main": "dist/addraf.js",
   "scripts": {
@@ -8,21 +8,25 @@
     "transpile": "tsc ./src/addraf.ts --removeComments --outDir ./dist --target es2017 && terser -c --passes=2 -m -o ./dist/addraf.min.js -- ./dist/addraf.js && eslint --ignore-path .eslintignore --ext .js,.ts . --fix"
   },
   "repository": {
-		"type": "git",
-		"url": "git+https://github.com/seanhay/addraf.git"
-	},
+    "type": "git",
+    "url": "git+https://github.com/seanhay/addraf.git"
+  },
   "keywords": [
     "address",
     "postcode",
     "zipcode",
     "form"
   ],
-  "author": "Sean Hay", 
-	"url": "https://github.com/seanhay/AddrAF/issues",
-	"homepage": "https://github.com/seanhay/AddrAF#readme",
+  "author": "Sean Hay",
+  "url": "https://github.com/seanhay/AddrAF/issues",
+  "homepage": "https://github.com/seanhay/AddrAF#readme",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "eslint": "^8.15.0"
+  },
+  "dependencies": {
+    "terser": "^5.13.1",
+    "typescript": "^4.6.4"
   }
 }

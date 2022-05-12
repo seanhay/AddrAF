@@ -40,7 +40,10 @@ function addraf(formSelector: string) {
         fetchAddress(input.value)
       })
     } else {
-      fetchButton.addEventListener('click', () => fetchAddress(postcodeInput.value))
+      fetchButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        fetchAddress(postcodeInput.value)
+      })
     }
 
     const fetchAddress = (pc: string) => {
