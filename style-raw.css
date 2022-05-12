@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wrapper {
+	@apply max-w-2xl mx-auto;
+}
+
+.wrapper form {
+	@apply p-2 bg-green-100 mb-4 rounded-lg;
+}
+
+
+.wrapper label {
+	@apply flex mb-2 items-center;
+
+}
+
+.wrapper label > span {
+	@apply flex w-40;
+}
+
+.wrapper label > input {
+	@apply border-2 border-gray-300 rounded-l-lg rounded-r-lg p-2;
+}
