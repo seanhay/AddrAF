@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AddrAF - Address AutoFill</title>
+  <script type="module" crossorigin src="/assets/index.ad4f7fa4.js"></script>
+  <link rel="stylesheet" href="/assets/index.147a4dd5.css">
+</head>
+<body>
+	<div class="wrapper font-bold">
+		<form action="index1.html" id="form-auto">
+			<label for="postcode1"><span class="label">郵便番号</span><input type="text" id="postcode1" postcode></label>
+			<label for="prefecture1"><span class="label">県</span><input type="text" id="prefecture1" prefecture></label>
+			<label for="city1"><span class="label">市区</span><input type="text" id="city1" city></label>
+			<label for="area1"><span class="label">町</span><input type="text" id="area1" address1></label>
+			<label for="prefectureKana1"><span class="label">県（カナ）</span><input type="text" id="prefectureKana1" prefectureKana></label>
+			<label for="cityKana1"><span class="label">市区（カナ）</span><input type="text" id="cityKana1" cityKana></label>
+			<label for="areaKana1"><span class="label">町（カナ）</span><input type="text" id="areaKana1" address1Kana></label>
+		</form>
+
+		<form action="index2.html" id="form-button">
+			<label for="postcode2"><span class="label">郵便番号</span><input type="text" id="postcode2" postcode><button getAddress>Get</button></label>
+			<label for="prefecture2"><span class="label">県</span><input type="text" id="prefecture2" prefecture></label>
+			<label for="city2"><span class="label">市区</span><input type="text" id="city2" city></label>
+			<label for="area2"><span class="label">町</span><input type="text" id="area2" address1></label>
+			<label for="prefectureKana2"><span class="label">県（カナ）</span><input type="text" id="prefectureKana2" prefectureKana></label>
+			<label for="cityKana2"><span class="label">市区（カナ）</span><input type="text" id="cityKana2" cityKana></label>
+			<label for="areaKana2"><span class="label">町（カナ）</span><input type="text" id="areaKana2" address1Kana></label>
+		</form>
+	</div>
+
+	
+	<script src="https://unpkg.com/addraf@1.2.8/dist/addraf.min.js"></script>
+	<script>
+		addraf('#form-auto');
+		addraf('#form-button');
+	</script>
+</body>
+</html>
