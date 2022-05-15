@@ -21,3 +21,5 @@ jobs:
           git add -f docs
           git commit -m "Pushing build files"
           git push -f origin gh-pages
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
