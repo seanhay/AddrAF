@@ -9,7 +9,9 @@ jobs:
         with:
           node-version: 18
       - name: Build package with Vite
-        run: npm run build
+        run: |
+          npm i
+          npm run build
       - name: Commit to gh-pages branch
         run: |
           git config --global user.email "sean@seanhay.com"
