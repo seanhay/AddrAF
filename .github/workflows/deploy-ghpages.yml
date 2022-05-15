@@ -4,6 +4,7 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -12,7 +13,7 @@ jobs:
           npm i
           npm run build
       - name: Commit to gh-pages branch
-        uses: actions/checkout@v3
+        
         run: |
           git config --global user.email "sean@seanhay.com"
           git config --global user.name "Sean Hay"
