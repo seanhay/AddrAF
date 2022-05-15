@@ -4,7 +4,6 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -12,6 +11,7 @@ jobs:
         run: |
           npm i
           npm run build
+      - uses: actions/checkout@v3
       - name: Commit to gh-pages branch
         run: |
           git config --global user.email "sean@seanhay.com"
@@ -21,5 +21,3 @@ jobs:
           git add -f docs
           git commit -m "Pushing build files"
           git push -f origin gh-pages
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
